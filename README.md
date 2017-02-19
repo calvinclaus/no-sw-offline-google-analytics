@@ -1,6 +1,9 @@
 # no-sw-offline-google-analytics
 Service Worker independent offline Google Analytics Wrapper that caches calls to `ga(...)` when offline and retries them when online again.
 
+
+![funny img](http://i.giphy.com/10jJopkIyx8aGs.gif)
+
 ## Disclaimer
 
 You sould use this library if you need offline GA tracking without relying on Service Worker. If you have no problem with your offline support failing on browsers that do not support Service Workers use: <a href="https://www.npmjs.com/package/sw-offline-google-analytics">sw-offline-google-analytics</a> instead.
@@ -10,7 +13,7 @@ You sould use this library if you need offline GA tracking without relying on Se
 This package is distributed via npm:
 
 ```
-npm i no-sw-offline-google-analytics
+npm i -S no-sw-offline-google-analytics
 ```
 The only dependency is for the `ga` object to be globally available. This is automatically the case if you include the standard Google Analytics snippet in your .html files. 
 
@@ -21,7 +24,7 @@ Should you not want `ga` exposed globally please either file a PR that allows pa
 ## Usage
 
 To use the wrapper instead of calling `ga(...)` directly you call `gaWrapper.ga(...)`. 
-A call to `ga(...)` is cached when `navigator.onLine = false`.
+A call to `ga(...)` is cached when `navigator.onLine == false`.
 Cached calls will be retried every 5s (by default) and as soon as the script is required. 
 
 ```javascript
